@@ -13,7 +13,7 @@ In this repository, we used various predictive models to see how accurate they a
 * **While implementing cross validation, remember to oversample or undersample the training data during cross validation and not before -** In cross validation the data is split into "folds" for training and testing. Oversample/Undersample only on the training fold not on the entire dataset beforehand. If we balance the whole dataset before splitting, information from the test set can "leak" into the training dataset (called data leakage), this leads to overly optimistic performance results.
 * **Not using accuracy score as a metric to measure with imbalanced datasets, instead using f1-score, precision/recall score or the confusion matrix -** with imbalanced datasets a model can get high accuracy just by always predicting the majority class (non-fraudulent transactions).
 
-**### Environment Setup**
+## Environment Setup
 * Faced an issue while importing the TensorFlow library as the kernel was using Python version 3.13.5 but Tensor Flow is only supported for Python versions until 3.12.
 * Deprecated the Python version of the Kernel from 3.13.5 to 3.12.11
   - Gained access as the root user in Terminal
