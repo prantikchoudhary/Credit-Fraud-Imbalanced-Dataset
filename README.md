@@ -24,6 +24,36 @@ In this repository, we used various predictive models to see how accurate they a
   - !pip install tensorflow
   - Restart Kernel
   - Now we can 'import  tensorflow' as required
+
+ ## Scaling and Distributing 
+In this phase, we first scale the columns comprising of Time and Amount. Time and Amount should be scaled as other columns. On the other hand, we need to also create a sub sample of the dataframe in order to have an equal amount of Fraud and Non-Fraud cases.
+
+**What is a sub-sample?**
+For our case, the sub-sample would be a dataframe with a 50/50 ratio of fraud and non-fraud transactions (equally distributed)
+
+**Why do we create a sub-sample?**
+Using the original dataframe cause the following issues :
+* Overfitting - Our classification models will assume that in most cases there are no frauds.
+* Wrong Correlations - Although we do not know what the "V" feature stands for , it will be useful to understand how each of this feature influence the result (fraud or non-fraud)
+
+**Summary**
+* Scaled amount and scaled time are the columns with scaled values.
+* 492 cases of fraud in our dataset hence we can get 492 cases of non-fraud to create the sub-sample.
+* Concat the 492 cases of fraud and non-fraud creating a new sub-sample.
+
+## Splitting the Dataframe 
+Before proceeding with the **'Random UnderSampling'** Technique we have to separate the original dataframe. Why? For testing purposes, although we split the data while implementing **Random UnderSampling** or **OverSampling techniques**, we want to test our model on the original testing set not on the testing set created by these techniques. The main goal is to fit the model either with the datasamples that were undersample and oversample (in order for our model to detect the patterns) and then test it on the original testing set.
+
+## Random Under-Sampling 
+Implementing "Random Under Sampling" which basically consists of removing data in order to have a more balanced dataset and thus avoiding our model to overfit.
+
+**Steps:**
+* Determine how imbalanced is our class (value_counts() determine the amount for each label)
+* Once we determine how many instances are considered fraud transactions (Fraud='1'). We bring the non-fraud transactions to the same amount as the fraud transactions (50/50 ratio), 492 cases of fraud and non-fraud transactions.
+* After implementing this, we have a sub-sample of our dataframe with a 50/50 ratio. The next step is to implement a shuffle to see if our models can maintain a certain accuracy everytime we run the script.
+**Note:** The main issue with "Random Under Sampling" is that we run the risk that our classification models will not perform as accurate as we would like to since there is information loss (bringing 492 non-fraud transaction from 284,315 non-fraud transactions)
+
+
  
 
 
